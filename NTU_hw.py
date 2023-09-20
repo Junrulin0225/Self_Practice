@@ -114,3 +114,16 @@ if num[0] > num[1]:
     print(num[0])
 else:
     print(num[1])
+
+
+
+#HW 2.3 Leap Year or not -> complete!
+year = int(input(''))
+if year % 400 == 0:
+    print('Leap year')
+elif year % 100 == 0:
+    print('Not a leap year')
+elif year % 4 == 0:
+    print('Leap year')
+else:
+    print('Not a leap year')
