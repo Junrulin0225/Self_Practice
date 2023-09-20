@@ -127,3 +127,51 @@ elif year % 4 == 0:
     print('Leap year')
 else:
     print('Not a leap year')
+
+
+
+#HW 2.4 Vowel or Consonant -> complete!
+
+vowel_list = ['a', 'e', 'i', 'o', 'u']
+letter = input('')
+if letter in vowel_list:
+    print('Vowel')
+else:
+    print('Consonant')
+
+
+
+#HW 2.5 Positive, negative or zero -> complete!
+num = int(input(''))
+if num > 0:
+    print('Positive')
+elif num < 0:
+    print('Negative')
+elif num == 0:
+    print('zero')
+
+
+#HW 2.6 Check the digits -> complete!
+user = input('')
+if user.isdigit() == True:
+    print(f'Contain only digits, {len(user)} ')
+else:
+    print(f'Does not ontain only digits, {len(user)} ')
+
+
+#HW 2.7 calculate student's grade based on the criteria
+score = float(input(''))
+if score != int(score) or score > 100 or score < 0:
+    print('Error')
+elif 90 <= score < 100:
+    print(int(score), 'A')
+elif 80 <= int(score) < 90:
+    print(int(score), 'B')
+elif 70 <= int(score) < 80:
+    print(int(score), 'C')
+elif 60 <= int(score) < 70:
+    print(int(score), 'D')
+elif int(score) < 60:
+    print(int(score), 'E')
+    
+#HW 2.8 covert the sec to day:hr:min:sec  -> not yet!
