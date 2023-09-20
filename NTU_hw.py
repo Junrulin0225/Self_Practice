@@ -1,3 +1,4 @@
+###HW WEEK 1
 ##HW1 1. Number size -> complete!
 # num = input('Please enter three numbers, float or int: ').split()
 
@@ -42,3 +43,16 @@
 #     print('Moderate')
 # else:
 #     print('Strong') 
+
+###HW WEEK 2
+
+#HW 2.1  -> complete!
+num = float(input('Enter a number : '))
+if num % 2 == 0:
+    print('even')
+
+elif num != int(num):
+    print('This number is not an integer.')
+
+else:
+    print('odd')
