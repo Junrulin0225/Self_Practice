@@ -44,6 +44,56 @@
 # else:
 #     print('Strong') 
 
+
+#懷元solution
+import math
+# 1
+print(f"{max([float(i) for i in input('please input 3 numbers: ').split()]):.2f}")
+
+# 2
+a, b, c = [float(i) for i in input('please input a b c: ').split()]
+tmp = math.sqrt(b * b - 4 * a * c)
+if tmp == 0:
+    x = -b / (2 * a)
+    print(f'{x:.3f}')
+else:
+    x = [(-b + tmp) / (2 * a), (-b - tmp) / (2 * a)]
+    print(' '.join([f'{i:.3f}' for i in x]))
+
+# 3
+mode, t = input('please input condiction and temperature: ').split(',')
+if mode == 'C to F':
+    f = float(t) * 9 / 5 + 32
+    print(f'{f:.2f}')
+elif mode == 'F to C':
+    c = float(t) - 32 * 5 / 9
+    print(f'{c:.2f}')
+else:
+    print('Invalid')
+
+# 4
+price = float(input('please input price: '))
+if price > 100:
+    discount = price * 0.1
+    print(f'{price:.2f} {discount:.2f} {price - discount:.2f}')
+else:
+    print(f'{price:.2f} 0.00 {price:.2f}')
+
+# 5
+password_len = len(input('please input password: '))
+if password_len < 6:
+    print('Weak')
+elif password_len <= 10:
+    print('Moderate')
+else:
+    print('Strong')
+
+
+
+
+
+
+
 ###HW WEEK 2
 
 #HW 2.1  -> complete!
@@ -56,3 +106,11 @@ elif num != int(num):
 
 else:
     print('odd')
+
+
+#HW 2.2 -> complete!
+num = input('').split() 
+if num[0] > num[1]:
+    print(num[0])
+else:
+    print(num[1])
