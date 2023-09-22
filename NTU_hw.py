@@ -175,3 +175,16 @@ elif int(score) < 60:
     print(int(score), 'E')
     
 #HW 2.8 covert the sec to day:hr:min:sec  -> not yet!
+
+###HW WEEK 3
+#HW 3.1 -> python tutor can work but doesn't work on VS
+num_list= input('').split(' ')
+max_num = num_list[0]
+for num in num_list:
+    if num > max_num:
+        max_num = num
+print(max_num)
+
+
+
+
