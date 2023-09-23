@@ -196,4 +196,8 @@ if is_digit:
     print('digit')
 else:
     print('not digit')
-
+ 
+#HW 3.3 -> complete!
+import math
+num = int(input('Enter a number: '))
+print(math.factorial(num))
