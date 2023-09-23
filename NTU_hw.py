@@ -201,3 +201,7 @@ else:
 import math
 num = int(input('Enter a number: '))
 print(math.factorial(num))
+
+#HW 3.4 -> 'reverse the word' -> not sure how to use the while loop here...
+user = str(input('Please enter a string: '))
+print(user[::-1])
