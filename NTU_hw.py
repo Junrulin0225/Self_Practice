@@ -186,5 +186,14 @@ for num in num_list:
 print(max_num)
 
 
-
+#HW 3.2 -> 懷元solution
+is_digit = True
+for i in input('please type a string: '):
+    if i not in '0123456789':
+        is_digit = False
+        break
+if is_digit:
+    print('digit')
+else:
+    print('not digit')
 
