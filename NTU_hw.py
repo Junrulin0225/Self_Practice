@@ -202,6 +202,23 @@ import math
 num = int(input('Enter a number: '))
 print(math.factorial(num))
 
-#HW 3.4 -> 'reverse the word' -> not sure how to use the while loop here...
+#HW 3.4 -> 'reverse the word' -> not sure how to use the while loop here... but it still works.
 user = str(input('Please enter a string: '))
 print(user[::-1])
+
+
+#HW 3.5 -> 'set up a massword' -> not sure how to use the dic here... but it still works.
+set_again = True
+ 
+while set_again:
+    password = input('Please enter a new password: ')
+    if len(password) >= 8 and any([n.isupper() for n in list(password)]) and any([n.islower() for n in list(password)]) and any([n.isdigit() for n in list(password)]):
+        print('The password is strong.')  
+        break
+                 
+    elif len(password) <= 8:
+        True
+        print('The password is weak.')
+    else:
+        True
+        print('Please make sure to match the criteria.')
