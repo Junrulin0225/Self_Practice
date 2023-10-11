@@ -207,7 +207,7 @@ user = str(input('Please enter a string: '))
 print(user[::-1])
 
 
-#HW 3.5 -> 'set up a massword' -> not sure how to use the dic here... but it still works.
+#HW 3.5 -> 'set up a password' -> not sure how to use the dic here... but it still works.
 set_again = True
  
 while set_again:
@@ -222,3 +222,31 @@ while set_again:
     else:
         True
         print('Please make sure to match the criteria.')
+
+
+#HW 4.1-> calculator with function -> complete! must have simpler codes!
+user_enter = input('Please enter num1, operator, num2: ').split(' ')
+num1 = float(user_enter[0])
+num2 = float(user_enter[2])
+def add(a,b):
+    print(a + b)
+def subtract(a,b):
+    print(a - b)
+def multiply(a,b):
+    print(a * b)
+def divide(a,b):
+    print(a / b)
+
+if int(user_enter[1]) == 1:
+    add(a = num1,b= num2)
+elif int(user_enter[1]) == 2:
+    subtract(a = num1,b= num2)
+elif int(user_enter[1]) == 3:
+    multiply(a = num1,b= num2)
+elif int(user_enter[1]) == 4:
+    if num2 == 0:
+        print('Cannot divide by zero.')
+    else:
+        divide(a = num1,b= num2)
+else:
+    print('Invalid choice')
