@@ -250,3 +250,22 @@ elif int(user_enter[1]) == 4:
         divide(a = num1,b= num2)
 else:
     print('Invalid choice')
+
+
+#HW 4.2-> HW 3.2 with function -> complete!
+number = input('please type a string: ')
+def check_digit(number):
+    if number.isdigit() == True:
+        print('digit')
+    else:
+        print('not digit')
+check_digit(number)
+
+
+#HW 4.3-> HW 3.3 with function -> complete!
+import math
+num = int(input('Enter a number: '))
+def check_factorial(num):
+    print(math.factorial(num))
+    
+check_factorial(num)
