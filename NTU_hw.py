@@ -269,3 +269,14 @@ def check_factorial(num):
     print(math.factorial(num))
     
 check_factorial(num)
+
+
+#HW 4.4-> HW 3.3 with function -> Anagrams or not! -> complete!
+voc_list = input('Please enter two words: ').split(',')
+    
+def check(word1, word2):
+    if sorted(str(word1)) == sorted(str(word2)):
+        print('Anagrams!')
+    else:
+       print('Not anagrams!') 
+check(word1 = voc_list[0], word2 = voc_list[1])
