@@ -280,3 +280,25 @@ def check(word1, word2):
     else:
        print('Not anagrams!') 
 check(word1 = voc_list[0], word2 = voc_list[1])
+
+#HW 4.5-> HW 3.3 with function -> score -> there's still a bug to fix!
+score_list = input('Please enter all the scores: ').split(' ')
+
+def cal_average(*n):
+    sum = 0
+    for score in score_list:
+        sum += float(score)
+    return round(sum/len(score_list),2)
+ave = cal_average(score_list)
+def score_quiteria():
+    if 100 < ave < 90:
+        print(ave, 'A')
+    elif 89 < ave < 80:
+        print(ave, 'B')
+    elif 79 < ave < 70:
+        print(ave,'C')
+    elif 69 < ave < 60:
+        print(ave,'D')
+    else:
+        print(ave,'F')
+score_quiteria()
