@@ -1,1 +1,28 @@
+user = input('A: purchase pass\nB: purchase single card\nC: purchase multiple cards\n').upper()
+if user == 'B':
+    print('$2.00 cost for each card.')
+    b1 = input('B: purchase value\nC: purchase pass\n').upper()
 
+    if b1 == 'B':
+        b11 = float(input('enter the value: $ '))
+        b111 = input('press C when done.').upper()
+        if b111 == 'C':
+            total = float(b11 + 2)
+            print(f'$2.00 cost for each card.\n${b11} value each\nselection: 1 card\n${total} is the total purchase.')
+            print()
+            b1111 = input('Press C to complete transaction.').upper()
+            if b1111 == 'C':
+                print('insert and quickly remove the card.')
+elif user == 'A':
+    balance = float(input('card balance : $ '))
+    a1 = input('A: smart benefits\nB: add value\nC: purchase pass\n').upper()
+    if a1 == 'B':
+        print(f'Smart value: ${balance}')
+        a11 = float(input('enter the value you want to add: $ '))
+        total = float(a11 + balance)        
+        a111 = input('Press C to complete transaction. ').upper()
+        if a111 == 'C':
+            a1111 = input('insert money or\npress B to pay with credit card\npress C to pay with debit card. ').upper()
+                    
+            if a1111 == 'B' or 'C':
+                print(f'${total} is the total purchase.')
