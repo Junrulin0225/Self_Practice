@@ -1,1 +1,3 @@
 # Source: IBM module 6 (SQL) course 4
+SELECT * FROM `lively-nimbus-396809.covid_data.CovidDeaths` 
+LIMIT 1000
