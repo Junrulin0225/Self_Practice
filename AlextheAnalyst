@@ -1,0 +1,179 @@
+Project 1: SQL Data Exploration 
+Data: Covid
+
+SELECT
+  *
+FROM
+  `lively-nimbus-396809.covid_data.CovidDeaths` 
+
+SELECT
+  *
+FROM
+  `lively-nimbus-396809.covid_data.CovidVaccination` -- Looking AT Total Cases vs Total Deaths --
+SELECT
+  location,
+  date,
+  total_cases,
+  new_cases,
+  total_deaths,
+  population,
+  (total_deaths/total_cases)*100 AS death_percen
+FROM
+  `lively-nimbus-396809.covid_data.CovidDeaths` -- TO see the average OF the death percentage IN each location --
+SELECT
+  continent,
+  AVG((total_deaths/total_cases)*100) AS death_avg
+FROM
+  `lively-nimbus-396809.covid_data.CovidDeaths`
+WHERE
+  date BETWEEN '2020-01-01'
+  AND '2022-12-31'
+GROUP BY
+  continent
+HAVING
+  death_avg > 0.5
+ORDER BY
+  death_avg DESC -- TO see Total Cases vs Population --
+SELECT
+  location,
+  date,
+  (total_cases / population) AS case_percen
+FROM
+  `lively-nimbus-396809.covid_data.CovidDeaths` -- TO see Countries
+WITH
+  Highest Infection Rate compared TO Population --
+SELECT
+  location,
+  population,
+  MAX(total_cases) AS Highest_Infection_Count,
+  MAX(total_cases/population) AS Highest_Infection_Count_percen
+FROM
+  `lively-nimbus-396809.covid_data.CovidDeaths`
+GROUP BY
+  location,
+  population
+ORDER BY
+  Highest_Infection_Count_percen DESC -- TO see Countries
+WITH
+  Highest Death Count per Population
+SELECT
+  location,
+  population,
+  MAX(total_deaths) AS highest_death_num,
+  MAX((total_deaths/population)*100) AS highest_death_percen
+FROM
+  `lively-nimbus-396809.covid_data.CovidDeaths`
+GROUP BY
+  location,
+  population
+ORDER BY
+  highest_death_percen DESC -- Let's
+BREAK
+  things down BY Continent -- -- TO see Total Death Count BY Continent --
+SELECT
+  continent,
+  MAX(total_deaths) AS total_death_count
+FROM
+  `lively-nimbus-396809.covid_data.CovidDeaths`
+WHERE
+  continent IS NOT NULL
+GROUP BY
+  continent
+ORDER BY
+  total_death_count DESC -- TO see Continents
+WITH
+  the highest death count per population
+SELECT
+  continent,
+  MAX(total_deaths) AS total_death_count,
+  MAX((total_deaths/population)*100) AS total_death_count_per_population
+FROM
+  `lively-nimbus-396809.covid_data.CovidDeaths`
+WHERE
+  continent IS NOT NULL
+GROUP BY
+  continent
+ORDER BY
+  total_death_count_per_population DESC -- Global numbers -- --???--
+SELECT
+  date,
+  MAX(new_cases) AS total_cases,
+  SUM(CAST(new_deaths AS int)) AS total_deaths,
+  MAX(CAST(new_deaths AS int)/new_cases)*100 AS death_percen
+FROM
+  `lively-nimbus-396809.covid_data.CovidDeaths`
+WHERE
+  continent IS NOT NULL
+GROUP BY
+  date --
+JOIN
+  tables -- -- TO see Total Population vs Vaccinations --
+SELECT
+  t_Death.continent,
+  t_Death.location,
+  t_Death.date,
+  population,
+  t_Vaccine.new_vaccinations
+FROM
+  `lively-nimbus-396809.covid_data.CovidDeaths` AS t_Death
+JOIN
+  `lively-nimbus-396809.covid_data.CovidVaccination` AS t_Vaccine
+ON
+  t_Death.location = t_Vaccine.location_of
+  AND t_Death.date = t_Vaccine.date_of
+WHERE
+  t_Death.continent IS NOT NULL
+ORDER BY
+  t_Death.location,
+  t_Death.date -- Rolling numbers FOR total vaccinations --
+SELECT
+  t_Death.continent,
+  t_Death.location,
+  t_Death.date,
+  population,
+  t_Vaccine.new_vaccinations,
+  SUM(t_Vaccine.new_vaccinations) OVER (PARTITION BY t_Death.location ORDER BY t_Death.location, t_Death.date) AS rolling_vaccine
+FROM
+  `lively-nimbus-396809.covid_data.CovidDeaths` AS t_Death
+JOIN
+  `lively-nimbus-396809.covid_data.CovidVaccination` AS t_Vaccine
+ON
+  t_Death.location = t_Vaccine.location_of
+  AND t_Death.date = t_Vaccine.date_of
+WHERE
+  t_Death.continent IS NOT NULL
+ORDER BY
+  t_Death.location,
+  t_Death.date -- Use CTE
+  OR TEMP TABLE FOR rolling_vaccine FOR further calculation -- -- Population_ver_Vaccine: How much vaccination per pop -- -- error... --
+WITH
+  Population_ver_Vaccine (continent,
+    location,
+    population,
+    new_vaccinations,
+    rolling_vaccine) AS (
+  SELECT
+    t_Death.continent,
+    t_Death.location,
+    t_Death.date,
+    population,
+    t_Vaccine.new_vaccinations,
+    SUM(t_Vaccine.new_vaccinations) OVER (PARTITION BY t_Death.location ORDER BY t_Death.location, t_Death.date) AS rolling_vaccine
+  FROM
+    `lively-nimbus-396809.covid_data.CovidDeaths` AS t_Death
+  JOIN
+    `lively-nimbus-396809.covid_data.CovidVaccination` AS t_Vaccine
+  ON
+    t_Death.location = t_Vaccine.location_of
+    AND t_Death.date = t_Vaccine.date_of
+  WHERE
+    t_Death.continent IS NOT NULL )
+SELECT
+  *,
+  (rolling_vaccine/population) *100
+FROM
+  Population_ver_Vaccine -- TEMP TABLE (must learn)--
+CREATE TABLE
+  #
+INSERT INTO
+
