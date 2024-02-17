@@ -18,7 +18,3 @@ Airlines['dest_size'] = Airlines['dest_size'].str.strip()
 print(Airlines['dest_region'].unique())
 print(Airlines['dest_size'].unique())
 
-
-#整理分類: collapsing data into categories
-#先製作range
-#小難，要numpy
